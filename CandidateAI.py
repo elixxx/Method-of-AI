@@ -23,6 +23,16 @@ class CandidateAI:
 
         # Initialize the Constraint Validator
         self._validator = Validator()
+    def print(self):
+        for lecture_idx, lecture in enumerate(self.assignments):
+            lecture_ = "Lecture"+str(lecture_idx+1)
+            instructor = "Instructor"+str(lecture[0])
+            room = "Room"+str(lecture[1])
+            time_dict = ['8-10','10-12','12-14']
+            time = time_dict[lecture[2]-1]
+            day_dict = ['Monday', 'Tuesday', 'wednesday','Thursday', 'Friday']
+            day = day_dict[lecture[3]-1]
+            print(lecture_+":"+instructor+":"+room+":"+time+":"+day)
 
     def crossover(self, other_candidate, strategy="onePointSwap"):
         """Exchange of Properties of two Candidates

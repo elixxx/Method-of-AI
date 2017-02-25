@@ -79,7 +79,9 @@ class Validator:
         self._counter_instructor_time[(lecture[0], lecture[3], lecture[2])] += 1
         self._counter_instructor_lecture[(lecture[0])] += 1
         error = 0
-        error += self._lectures[idx - 1].check_constraint(lecture[1], lecture[0])
+        error += self._lectures[idx ].check_constraint(lecture[1], lecture[0])
+        if self._lectures[idx ].idx != idx +1:
+            print("ERROR")
         error += self._room[lecture[1] - 1].check_constraint(lecture[3], lecture[2])
         error += self._instructor[lecture[0] - 1].check_constraint(lecture[3], lecture[2])
         return error
@@ -111,7 +113,6 @@ class Room:
         if time not in self.valid_times:
             error += 1
         return error
-
 
 class Instructor:
 
